@@ -1,0 +1,33 @@
+{
+  "name": "shufflegenie-backend",
+  "version": "1.0.0",
+  "description": "Simple node backend to get user data for ShuffleGenie App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node api/server.js",
+    "dev": "nodemon --watch \"./api/**\" --ext \"ts,js\" --ignore \"src/**/*.spec.ts,src/**/*.json\" --exec \"node api/server.js\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyggnus/ShuffleGenie-Backend.git"
+  },
+  "author": "lkotlarenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cyggnus/ShuffleGenie-Backend/issues"
+  },
+  "homepage": "https://github.com/Cyggnus/ShuffleGenie-Backend#readme",
+  "dependencies": {
+    "axios": "^1.3.4",
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "nodemon": "^2.0.20"
+  }
+}
