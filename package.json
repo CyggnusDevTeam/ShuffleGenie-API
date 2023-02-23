@@ -1,7 +1,7 @@
 {
   "name": "shufflegenie-backend",
-  "version": "1.0.0",
-  "description": "Simple node backend to get user data for ShuffleGenie App",
+  "version": "1.0.1",
+  "description": "Simple node backend to get user data for ShuffleGenie App, designed to be run as cloud function.",
   "main": "server.js",
   "scripts": {
     "start": "node api/server.js",
@@ -19,11 +19,9 @@
   },
   "homepage": "https://github.com/Cyggnus/ShuffleGenie-Backend#readme",
   "dependencies": {
+    "@google-cloud/functions-framework": "^3.0.0",
     "axios": "^1.3.4",
-    "cheerio": "^1.0.0-rc.12",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "vercel": "^28.16.5"
+    "cheerio": "^1.0.0-rc.12"
   },
   "devDependencies": {
     "eslint": "^8.34.0",
