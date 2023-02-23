@@ -1,17 +1,21 @@
+const functions = require('@google-cloud/functions-framework');
 const axios = require('axios');
 const cheerio = require('cheerio');
-const { json } = require('express');
-const express = require('express');
-const DATA_DOMAIN = 'https://marvelsnapzone.com/users/';
 
-// Set up the express server
-const app = express();
-app.use(json());
-const port = 3001;
+functions.http('getCollection', async (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, POST');
 
-app.get('/user/:user', async (req, res) => {
+  if (req.method === 'OPTIONS') {
+    // stop preflight requests here
+    res.status(204).send('Invalid request');
+    return;
+  }
+
+  const { user } = req.query;
+  if (!user) res.status(422).send('Missing params!');
   try {
-    const { user } = req.params;
+    const DATA_DOMAIN = 'ENDPOINT GOES HERE';
     // Request user profile
     const { data: html } = await axios.get(`${DATA_DOMAIN}${user}`);
 
@@ -28,14 +32,9 @@ app.get('/user/:user', async (req, res) => {
       cards.push({ id, name, imgUrl });
     });
 
+    // Respond with cards array
     res.json(cards);
   } catch (error) {
-    console.error(error);
     res.status(500).send(`Failed to retrieve user collection - ${error}`);
   }
-});
-
-// Start the server
-app.listen(port, () => {
-  console.log(`Server listening on port ${port}`);
 });
